@@ -1,5 +1,5 @@
 # Creador-cuentas-en-paypal-BOT-
-Es un creador de cuentas en paypal basado en el driver "Selenium" que utiliza un generador de datos de personas y tarjetas de creditos basada en un bin y datos de referencia.
+Es un creador de cuentas de netflix adaptable que esta programado para crear cuentas de paypal a travez de la verificacion de pago de netflix
 Requiere:
   pip3 install selenium
   y el "chromedriver.exe" ( va en la carpeta local donde esta el script )
