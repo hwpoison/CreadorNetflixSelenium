@@ -56,10 +56,11 @@ class NetflixBot():
 			}
 		}
 
-	def crear_cuenta(self, DU):	
+	def crear_cuenta(self):	
 		nv = SFork()
 		nv.IniciarDriver()
 		nv.elementos = self.elementos_netflix
+		DU = Generador_datos(datos).datos
 		paginas = {
 			"loginNetflix":"https://www.netflix.com/ar/login",
 			"suscribirse":"https://www.netflix.com/signup?action=startAction",
@@ -93,6 +94,8 @@ class NetflixBot():
 							"paypalCPass":DU["passw"]
 		}
 		
+		
+		
 		#Pagina de creacion cuenta netflix 
 		print("Clickeando boton 1")
 		print(nv.driver.current_url)
@@ -101,18 +104,37 @@ class NetflixBot():
 		nv.ClickearObjeto(".submitBtnContainer", "https://www.netflix.com/signup/registration")
 		nv.completarFormulario(loginNetflix)
 		nv.ClickearObjeto(".submitBtnContainer", "https://www.netflix.com/signup/regform")
-
-		nv.ClickearObjeto("#paypalDisplayStringId","https://www.netflix.com/signup/payment")
-		nv.ClickearObjeto(".submitBtnContainer", "https://www.netflix.com/signup/paypaloption")
-	
-		#Login en pagina de Paypal
-		print("Entrando a pagina de login de Paypal")
-		#nv.completarFormulario(loginPaypal)
-		nv.Clickear(nv.Buscar("paypalCrearBoton"))
-		nv.Esperar(5)
-		input(">PRESIONAR TECLA PARA CONTINUAR CON EL RELLENO DE FORMULARIO EN PAYPAL")
-		nv.completarFormulario(registroRapidoPaypal)
 		
+		while(True):
+			metodo = input("1)registroPaypalRapido 2)binDirecto:")
+			if(metodo == "1"):
+				nv.ClickearObjeto("#paypalDisplayStringId","https://www.netflix.com/signup/payment")
+				#Login en pagina de Paypal
+				print("Entrando a pagina de login de Paypal")
+				#nv.completarFormulario(loginPaypal)
+				nv.Clickear(nv.Buscar("paypalCrearBoton"))
+				nv.Esperar(5)
+				input(">PRESIONAR TECLA PARA CONTINUAR CON EL RELLENO DE FORMULARIO EN PAYPAL")
+				nv.completarFormulario(registroRapidoPaypal)
+			elif(metodo == "2"):
+				DU = Generador_datos(datos).datos
+				binDirecto = {
+								"firstName":DU["firtsName"],
+								"lastName":DU["lastName"],
+								"creditCardNumber":DU["tarjeta"]["numero"],
+								"creditExpirationMonth":DU["tarjeta"]["fecha"]["fecha_acortada"],
+								"creditCardSecurityCode":DU["tarjeta"]["codigo_seg"]	,
+								"creditZipcode":DU["postalCode"],
+				}
+				nv.ClickearObjeto("#creditOrDebitCardDisplayStringId","https://www.netflix.com/signup/payment")
+				nv.completarFormulario(binDirecto)
+				nv.Enter()
+			else:
+				print("No se selecciono ninguna opcion")
+		
+		
+		
+		#Consola de depuracion
 		while(1):
 			comand = input("#$")
 			try:
@@ -130,7 +152,7 @@ class NetflixBot():
 			
 			
 datos = {
-		"BIN":			"519603xxxxxxxxxx",
+		"BIN":			"425032xx89x1xxx3",
 		"address":		"Street aveneu xxxx",
 		"city":			"New york ",
 		"postalCode":	"10001",
@@ -140,8 +162,5 @@ datos = {
 		"paypal_loc":	"us"
 }
 
-datos = Generador_datos(datos).datos
-a = NetflixBot().crear_cuenta(datos)
 
-
-
+a = NetflixBot().crear_cuenta()
