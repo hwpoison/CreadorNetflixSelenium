@@ -62,8 +62,8 @@ class NetflixBot():
 		nv.elementos = self.elementos_netflix
 		self.datosUsuario = Generador_datos(datos).datos
 		
-		
-		
+		open("datos/log.txt","a+").writelines(str(self.datosUsuario)+"\n")
+		print(self.datosUsuario)
 		netflix = {
 			"loginNetflix":	"https://www.netflix.com/ar/login",
 			"registro":"https://www.netflix.com/signup/registration",
@@ -74,7 +74,7 @@ class NetflixBot():
 		}
 		
 		nv.Ir(netflix["suscribirse"])
-		
+	
 		loginNetflix = {	
 			"email":	self.datosUsuario["email"],
 			"password":	self.datosUsuario["passw"]
@@ -121,14 +121,17 @@ class NetflixBot():
 				nv.completarFormulario(registroRapidoPaypal)
 			elif(metodo == "2"):
 				self.datosUsuario = Generador_datos(datos).datos
+				open("datos/log.txt","a+").writelines(str(self.datosUsuario)+"\n")
+				print(self.datosUsuario)
 				binDirecto = {
-								"firstName":self.datosUsuario["firtsName"],
-								"lastName":self.datosUsuario["lastName"],
-								"creditCardNumber":self.datosUsuario["tarjeta"]["numero"],
-								"creditExpirationMonth":self.datosUsuario["tarjeta"]["fecha"]["fecha_acortada"],
-								"creditCardSecurityCode":self.datosUsuario["tarjeta"]["codigo_seg"]	,
-								"creditZipcode":self.datosUsuario["postalCode"],
+					"firstName":				self.datosUsuario["firtsName"],
+					"lastName":					self.datosUsuario["lastName"],
+					"creditCardNumber":			self.datosUsuario["tarjeta"]["numero"],
+					"creditExpirationMonth":	self.datosUsuario["tarjeta"]["fecha"]["fecha_acortada"],
+					"creditCardSecurityCode":	self.datosUsuario["tarjeta"]["codigo_seg"]	,
+					"creditZipcode":			self.datosUsuario["postalCode"],
 				}
+				nv.Clickear(nv.Buscar("hasAcceptedTermsOfUse", tipo="name"))
 				nv.Ir(netflix["tarjeta"])
 				nv.completarFormulario(binDirecto)
 				nv.Enter()
@@ -155,18 +158,15 @@ class NetflixBot():
 			
 #Plantilla de datos para generar			
 datos = {
-		"BIN":			"405037110401x1x1",
+		"BIN":			"425032x01xxxxxx3",
 		"address":		"Street aveneu xxxx",
 		"city":			"New york ",
 		"postalCode":	"10001",
 		"phoneNumber":	"615xxxxxxx",
-		"passw":		"netflicxxxx",
+		"passw":		"netflixxxx",
 		"state":		"NY",
 		"paypal_loc":	"us"
 }
 
 #Inicio de creacion
 botCrear = NetflixBot().crear_cuenta(datos)
-
-
-
