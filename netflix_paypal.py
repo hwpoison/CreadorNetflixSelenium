@@ -60,43 +60,46 @@ class NetflixBot():
 		nv = SFork()
 		nv.IniciarDriver()
 		nv.elementos = self.elementos_netflix
-		
 		self.datosUsuario = Generador_datos(datos).datos
 		
 		
+		
 		netflix = {
-			"loginNetflix":"https://www.netflix.com/ar/login",
-			"suscribirse":"https://www.netflix.com/signup?action=startAction",
-			"regPaypal":"https://www.paypal.com/ca/signup/account",
-			"tarjeta":"https://www.netflix.com/signup/creditoption",
+			"loginNetflix":	"https://www.netflix.com/ar/login",
+			"registro":"https://www.netflix.com/signup/registration",
+			"plan":"https://www.netflix.com/signup/planform",
+			"suscribirse":	"https://www.netflix.com/signup?action=startAction",
+			"regPaypal":	"https://www.paypal.com/ca/signup/account",
+			"tarjeta":		"https://www.netflix.com/signup/creditoption",
 		}
 		
 		nv.Ir(netflix["suscribirse"])
 	
 		
-		
-		loginNetflix = {	"email":self.datosUsuario["email"],
-							"password":self.datosUsuario["passw"]
+		input(">")
+		loginNetflix = {	
+			"email":	self.datosUsuario["email"],
+			"password":	self.datosUsuario["passw"]
 		}
 		
 		loginPaypal  = {
-							"email":self.datosUsuario["email"],
-							"password":self.datosUsuario["passw"]
+			"email":	self.datosUsuario["email"],
+			"password":	self.datosUsuario["passw"]
 		}
 		
 		registroRapidoPaypal = {
-							"paypalTarjeta":self.datosUsuario["tarjeta"]["numero"],
-							"paypalVencimiento":self.datosUsuario["tarjeta"]["fecha"]["fecha_acortada"],
-							"paypalCodigoSeg":self.datosUsuario["tarjeta"]["codigo_seg"],
-							"paypalNombre":self.datosUsuario["firtsName"],
-							"paypalApellido":self.datosUsuario["lastName"],
-							"paypalTelefono":self.datosUsuario["phoneNumber"],
-							"paypalDomicilio":self.datosUsuario["address"],
-							"paypalCiudad":self.datosUsuario["city"],
-							"paypalPostal":self.datosUsuario["postalCode"],
-							"paypalEmail":self.datosUsuario["email"],
-							"paypalPass":self.datosUsuario["passw"],
-							"paypalCPass":self.datosUsuario["passw"]
+			"paypalTarjeta":	self.datosUsuario["tarjeta"]["numero"],
+			"paypalVencimiento":self.datosUsuario["tarjeta"]["fecha"]["fecha_acortada"],
+			"paypalCodigoSeg":	self.datosUsuario["tarjeta"]["codigo_seg"],
+			"paypalNombre":		self.datosUsuario["firtsName"],
+			"paypalApellido":	self.datosUsuario["lastName"],
+			"paypalTelefono":	self.datosUsuario["phoneNumber"],
+			"paypalDomicilio":	self.datosUsuario["address"],
+			"paypalCiudad":		self.datosUsuario["city"],
+			"paypalPostal":		self.datosUsuario["postalCode"],
+			"paypalEmail":		self.datosUsuario["email"],
+			"paypalPass":		self.datosUsuario["passw"],
+			"paypalCPass":		self.datosUsuario["passw"]
 		}
 		
 		#Pagina de creacion cuenta netflix 
