@@ -74,9 +74,7 @@ class NetflixBot():
 		}
 		
 		nv.Ir(netflix["suscribirse"])
-	
 		
-		input(">")
 		loginNetflix = {	
 			"email":	self.datosUsuario["email"],
 			"password":	self.datosUsuario["passw"]
