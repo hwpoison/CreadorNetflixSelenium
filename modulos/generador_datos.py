@@ -7,7 +7,7 @@ import sqlite3
 from modulos.generador_tarjetas import Generar_tarjeta
 
 class Generador_datos():
-	def __init__(self,DATOS):
+	def __init__(self,DATOS, PRINT=None):
 		self.datos = {
 				"BIN":			"xxxxxxxxxxxxxx",
 				"firtsName":	None,
@@ -23,6 +23,7 @@ class Generador_datos():
 				"ocupacion":	None,
 				"paypal_loc":	None
 		}
+		self.PRINT = PRINT
 		#formatea la plantilla de datos con los datos introducidos 
 		#para generar una personalizacion
 		for d in DATOS:
@@ -79,11 +80,12 @@ class Generador_datos():
 			self.datos["state"] = "NY"
 		#Generar datos tarjeta
 		self.datos["tarjeta"] = Generar_tarjeta(self.datos["BIN"],1).dic_tarjetas[0]
-		
-		print("Datos generado:")
-		for i in self.datos:
-			print(i,":",self.datos[i])
-		print("===============")
+		if(self.PRINT):
+			print("Datos generado:")
+			for i in self.datos:
+				print(i,":",self.datos[i])
+			print("===============")
+		print("[+]Datos personales generados.")
 		
 	def sql_a_sqlite(self, sql, sqlite):
 		"""Para convertir un sql de fakenamegenerator

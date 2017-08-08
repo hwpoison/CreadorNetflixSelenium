@@ -60,7 +60,10 @@ class NetflixBot():
 		nv = SFork()
 		nv.IniciarDriver()
 		nv.elementos = self.elementos_netflix
+		
 		self.datosUsuario = Generador_datos(datos).datos
+		
+		
 		netflix = {
 			"loginNetflix":"https://www.netflix.com/ar/login",
 			"suscribirse":"https://www.netflix.com/signup?action=startAction",
