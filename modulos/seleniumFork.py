@@ -165,14 +165,14 @@ class SFork():
 		if(element != None and text != None):
 			element.clear()
 			element.send_keys(text)
-			print("Se ah completado el campo %s con:\"%s\""%(str(element.get_attribute("name")),str(text[0:8])));
+			print("Se ah completado el campo %s con:\"%s\""%(str(element.get_attribute("name")),str(text)));
 	
 	@verificarDriver
 	def escribirEnTextBox(self, element, text):
 		#Tipea texto sobre elemento pero no borra(para listabox)
 		if(text != None):
 			element.send_keys(text)
-			print("Se ah completado el campo %s con:\"%s\""%(str(element.get_attribute("name")),str(text[0:8])));
+			print("Se ah completado el campo %s con:\"%s\""%(str(element.get_attribute("name")),str(text)));
 	
 	def Enter(self, element=None ):
 		#Presiona la tecla enter sobre un elemento o el ultimo interactuado
