@@ -170,7 +170,3 @@ datos = {
 
 #Inicio de creacion
 botCrear = NetflixBot().crear_cuenta(datos)
-
-
-#DeborahM
-#netflic0
