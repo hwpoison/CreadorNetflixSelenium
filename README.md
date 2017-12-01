@@ -6,5 +6,5 @@ Tambien funciona para linux.
 
 Requiere:
   pip3 install selenium
-  y el "chromedriver.exe" ( va en la carpeta local donde esta el script )
+  Los drivers estan en la carpeta "drivers", pero si necesitan alguno acorde a su arquitectura descargue de aca y re-emplacen
   https://sites.google.com/a/chromium.org/chromedriver/downloads
