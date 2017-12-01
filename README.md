@@ -1,8 +1,14 @@
 # Creador de cuentas Netflix 
-Es un automatizador para crear cuentas de netflix a travez de los metodos de pagos como paypal o bin directo.
-Incluye el generador de datos, de numeros de tarjeta de creditos y un pequeño fork de Selenium para controlar
-aspectos especificos de una pagina.
-Tambien funciona para linux.
+Es un automatizador para crear cuentas de netflix a traves de los metodos de pagos como paypal o bin directo.
+Incluye:
+-Generador de datos personales aleatorios.
+-Numeros de tarjeta de creditos a base de un BIN opcional.
+-Un pequeño fork de Selenium para controlar aspectos especificos de una pagina, en este caso netflix y paypal, hasta la fecha de creacion del codigo.
+
+En si no hay que hacer mas que ejecutar el script principal con los datos configurados y ejecutarlo, tiene para soportar la intervencion manual, pero no total automatica debido a ciertas restricciones cohesionadas con la variabilidad de las interfaces, tiempos de cargas y otros detalles.
+
+
+Lo adapte para que funcione en Windows o GNU/Linux.
 
 Requiere:
   pip3 install selenium
