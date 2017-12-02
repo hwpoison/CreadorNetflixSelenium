@@ -171,39 +171,14 @@ class Generar_tarjeta():
 		
 	def gen_aleatorio(self, BIN):
 		numero = ""
-		for i in range(0, len(BIN)):
-			l = BIN[i:i+1]
-			if l == "x" or l == "X":
-				gen = random.randint(0,9)
-				numero+=str(gen)
-			else:
-				numero+=l
+		for i in BIN:
+			numero+=str(random.randint(0,9)) if i.lower() == "x" else i
 		return numero
 		
-	def checkear(self, numero):
-		r = False
-		ml = ""
-		j = 1
-		for i in range(-1,len(numero)-1):
-			a = int(numero[i]) * j
-			suma = self.sumar(str(a))
-			ml += "" + str(suma)
-			j+=1
-			if(j > 2):
-				j = 1
-		ml2 = self.sumar(ml[1:])
-		ml1 = (self.sumar(ml2) * 10 - ml2) % 10
+	def checkear(self, cc): #Parametro ejemplo 4896889802135
+		num = map(int, str(cc))
+		return sum(num[::-2] + [sum(divmod(d * 2, 10)) for d in num[-2::-2]]) % 10 == 0
 
-		if(int(numero[len(numero)-1:len(numero)]) == int(ml1)):
-			return True
-		return False
-			
-	def sumar(self, x):
-		c = 0
-		for i in str(x):
-			c+=int(i)
-		return c
-		
 	def crear_numero(self, BIN):
 		numero = self.gen_aleatorio(BIN)
 		for i in range(1,self.RANGO_GEN):
@@ -264,10 +239,11 @@ if __name__ == "__main__":
 		print("USO:  BIN_BASE CANTIDAD")
 
 
-bin_muestra = "4514011601xxxxxx"
+# ~ bin_muestra = "493xxxxxxxxxxxxx"
 #imprimir resultado en consola
-#num = Generar_tarjeta(bin_muestra,6,True)
+# ~ num = Generar_tarjeta(bin_muestra,16,True)
 
+# ~ print(num)
 #omitir impresion
 #num = Generar_tarjeta(bin_muestra,1)
 #print()
