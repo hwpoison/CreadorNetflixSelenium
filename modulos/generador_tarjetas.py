@@ -92,7 +92,7 @@ class Generar_tarjeta():
 		return numero
 		
 	def checkear(self, cc):
-		num = map(int, str(cc))
+		num = list((map(int, str(cc))))
 		return sum(num[::-2] + [sum(divmod(d * 2, 10)) for d in num[-2::-2]]) % 10 == 0
 
 	def crear_numero(self, BIN):
@@ -148,10 +148,7 @@ if __name__ == "__main__":
 bin_muestra = "450911xxxxxxxxxx"
 #imprimir resultado en consola
 num = Generar_tarjeta(bin_muestra,16,True)
-archivo_ = open("tarjetalog.txt","w")
-for i in num.dic_tarjetas.values():
-	archivo_.writelines(i["numero"]+"\n")
-	
+
 #omitir impresion
 #num = Generar_tarjeta(bin_muestra,1)
 #print()
