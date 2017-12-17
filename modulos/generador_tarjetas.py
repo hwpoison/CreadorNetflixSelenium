@@ -9,7 +9,7 @@ import datetime
 class Generar_tarjeta():
 	def __init__(self,BIN, cantidad=1, solo_impresion=False):
 		self.BIN = BIN.replace(" ","")#Procesar espacios
-		self.db_bins = "db_bins.txt"
+		self.db_bins = "modulos/db_bins.txt"
 		
 		if(len(self.BIN) > 16 or len(self.BIN) < 15):#Tiene que tener la longitud indicada
 			print("Por favor revisa la longitud del BIN.")
