@@ -10,7 +10,7 @@ class Generador_datos():
 	def __init__(self,DATOS, PRINT=None):
 		self.datos = {
 				"BIN":			"xxxxxxxxxxxxxx",
-				"firtsName":	None,
+				"juanpablojoseph7@gmail.com" : juan123,
 				"lastName":		None,
 				"address":		None,
 				"city":			None,
